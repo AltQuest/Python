@@ -35,18 +35,14 @@ async def on_message(message):
 		msg = ''
 		msg = 'okay {0.author.mention} here is my current member list:'.format(message) + '\n'
 		x=1
+		y=1
 		for mems in THE_Member_LIST:
 			msg += (str(x) + str(') ') + str(mems))
 
-			if (x == howmany):
+			if (x == (howmany*y)):
 				await client.send_message(message.channel, msg)
 				msg = ''
-			elif (x == (howmany*2)):
-				await client.send_message(message.channel, msg)
-				msg = ''
-			elif (x == (howmany*3)):
-				await client.send_message(message.channel, msg)
-				msg = ''
+				y+=1
 			x+=1
 		await client.send_message(message.channel, msg)
 	if message.content.startswith('!memcheck'):
